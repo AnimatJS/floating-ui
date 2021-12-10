@@ -48,6 +48,6 @@ declare const detectOverflow: (
 ) => Promise<SideObject>;
 
 export {autoPlacement, shift, arrow, size, flip, detectOverflow};
-export {hide, offset, limitShift} from '@floating-ui/core';
+export {hide, offset, limitShift, inline} from '@floating-ui/core';
 export {computePosition} from './';
 export {getScrollParents} from './utils/getScrollParents';

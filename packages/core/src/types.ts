@@ -34,6 +34,9 @@ export type Platform = {
     rootBoundary: RootBoundary;
   }) => ClientRectObject | Promise<ClientRectObject>;
   getDimensions: (args: {element: any}) => Dimensions | Promise<Dimensions>;
+  getClientRects: (args: {
+    element: any;
+  }) => Array<ClientRectObject> | Promise<Array<ClientRectObject>>;
 };
 
 export type Coords = {
@@ -76,6 +79,9 @@ export type MiddlewareData = {
     referenceHiddenOffsets: SideObject;
     escapedOffsets: SideObject;
   };
+  inline?: {
+    skip?: boolean;
+  };
   size?: {
     skip?: boolean;
   };
@@ -109,7 +115,7 @@ export type MiddlewareReturn = Partial<
     data: {
       [key: string]: any;
     };
-    reset: true | {placement?: Placement};
+    reset: true | {placement?: Placement; rects?: true | ElementRects};
   }
 >;
 
@@ -171,3 +177,4 @@ export {hide} from './middleware/hide';
 export {offset} from './middleware/offset';
 export {shift, limitShift} from './middleware/shift';
 export {size} from './middleware/size';
+export {inline} from './middleware/inline';
